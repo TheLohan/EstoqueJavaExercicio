@@ -3,6 +3,6 @@ public class Main {
         Loja IcariShop = new Loja("Icara Shop");
         IcariShop.definirEstoque();
         IcariShop.exibirEstoque();
-
+        IcariShop.mostrarItensFaltando();
     }
 }

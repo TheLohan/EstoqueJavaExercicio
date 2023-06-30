@@ -1,14 +1,14 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 import java.io.FileReader;
 
 public class Loja {
     private String nome;
-    private ArrayList<Produto> estoque;
+    private ArrayList<Produto> estoque = new ArrayList<>();
 
     public Loja(String nome) {
         setNome(nome);
-        this.estoque = new ArrayList<>();
     }
 
     public Loja(String nome, ArrayList<Produto> estoque) {
@@ -42,6 +42,7 @@ public class Loja {
                 double preco = Double.parseDouble(produtoInfo[2]);
                 int quantidade = Integer.parseInt(produtoInfo[3]);
                 estoque.add(new Produto(nome,codigo,preco, quantidade));
+                organizarEstoque();
             }
         } catch (Exception e) {
             System.out.println(e);
@@ -56,10 +57,12 @@ public class Loja {
     }
 
     public void organizarEstoque(){
-
+        Collections.sort(estoque);
     }
 
     public void mostrarItensFaltando(){
+        System.out.println("\n\nEsses são os 10 produtos com menos quantidade e devem ser repostos");
+        estoque.stream().limit(10).forEach(e -> System.out.println(e.getNome() + " - Quantidade: " + e.getQuantidade()));
 
     }
 

@@ -60,6 +60,17 @@ public class Produto implements Comparable{
 
     @Override
     public int compareTo(Object o) {
+        Produto produtoComparado = (Produto) o;
+        if(this.quantidade < produtoComparado.quantidade){
+            return -1;
+        } else if (this.quantidade > produtoComparado.quantidade) {
+            return 1;
+        }
+        else if(this.preco < produtoComparado.preco){
+            return -1;
+        } else if (this.preco > produtoComparado.preco) {
+            return 1;
+        }
         return 0;
     }
 }
